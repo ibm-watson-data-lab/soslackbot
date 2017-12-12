@@ -70,6 +70,11 @@ controller.setupWebserver(appEnv.port, function(err, express_webserver) {
         bot.say(msg);
     });
 
+    // health check endpoint
+    express_webserver.get('/health', function(req, res) {
+        res.send('OK');
+    });
+
     express_webserver.post('/stackoverflow/incoming', function(req, res) {
         // only handling the event type "new-question" so far
         var q;
