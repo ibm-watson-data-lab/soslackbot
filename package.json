@@ -2,6 +2,10 @@
     "dependencies": {
         "botkit": "^0.6",
         "he": "^1.1",
-        "striptags": "^3.1"
+        "striptags": "^3.1",
+        "cfenv": "*"
+    },
+    "scripts": {
+        "start": "node app.js"
     }
 }

@@ -7,6 +7,8 @@ var Botkit = require('botkit');
 var os = require('os');
 var he = require('he');
 var striptags = require('striptags');
+var cfenv = require("cfenv")
+var appEnv = cfenv.getAppEnv()
 
 var controller = Botkit.slackbot({
 // debug: true,
@@ -56,7 +58,7 @@ controller.on('reaction_added', function(bot, message) {
 });
 
 /** Support incoming web requests **/
-controller.setupWebserver(3000, function(err, express_webserver) {
+controller.setupWebserver(appEnv.port, function(err, express_webserver) {
     express_webserver.get('/', function(req, res) {
         res.send('I am a bot');
 
