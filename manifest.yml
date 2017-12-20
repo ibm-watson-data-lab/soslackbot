@@ -1,5 +1,5 @@
 applications:
-- name: soslackbot-beta
+- name: soslackbot
   memory: 512M
   instances: 1
   domain: mybluemix.net
