@@ -1,9 +1,9 @@
 {
     "dependencies": {
-        "botkit": "^0.6",
+        "botkit": "^0.6.11",
+        "cfenv": "^1.0",
         "he": "^1.1",
-        "striptags": "^3.1",
-        "cfenv": "^1.0"
+        "striptags": "^3.1"
     },
     "scripts": {
         "start": "node app.js"
