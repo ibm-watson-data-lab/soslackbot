@@ -120,4 +120,34 @@ controller.setupWebserver(appEnv.port, function(err, express_webserver) {
             res.send('This endpoint expects a specific data structure; see docs');
         }
     });
+
+    express_webserver.post('/stackoverflow/event', function(req, res) {
+        // other events can be handled, currently it is assuming type = "assigned"
+        if(typeof req.body.data !== 'undefined'
+            && typeof req.body.data.question_id !== 'undefined') {
+            let data = req.body.data;
+
+            let text = "The question _" + he.decode(data.title) + "_ has been assigned to <@" + data.assigned_to + ">. <https://sodashboard.mybluemix.net/home.html#edit?" + data.question_id + "| View on the dashboard>";
+
+            console.log(text);
+
+            var msg1 = {
+                color: "#99ccff",
+                text: text
+            };
+            var msg = {
+                type: "message",
+                channel: process.env.SLACK_CHANNEL_ID,
+                attachments: [ msg1 ]
+            };
+            bot.say(msg);
+
+            res.send('OK');
+
+        } else {
+            res.status(400);
+            res.send('This endpoint expects a specific data structure; see docs');
+        }
+
+    });
 });
