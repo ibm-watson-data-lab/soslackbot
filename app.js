@@ -127,7 +127,7 @@ controller.setupWebserver(appEnv.port, function(err, express_webserver) {
             && typeof req.body.data.question_id !== 'undefined') {
             let data = req.body.data;
 
-            let text = "This question _" + he.decode(data.title) + "_ has been assigned to <@" + data.assigned_to + ">. <https://sodashboard.mybluemix.net/home.html#edit?" + data.question_id + "| View on the dashboard>";
+            let text = "The question _" + he.decode(data.title) + "_ has been assigned to <@" + data.assigned_to + ">. <https://sodashboard.mybluemix.net/home.html#edit?" + data.question_id + "| View on the dashboard>";
 
             console.log(text);
 
